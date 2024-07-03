@@ -745,3 +745,20 @@ pub struct MemoryAccessRecord {
 
 /// The threshold for splitting deferred events.
 pub const DEFERRED_SPLIT_THRESHOLD: usize = 1 << 19;
+
+#[cfg(test)]
+mod tests {
+    use crate::syscall::precompiles::keccak256::KeccakPermuteEvent;
+
+    use super::ExecutionRecord;
+
+    #[test]
+    pub fn test_split() {
+        let mut record = ExecutionRecord::default();
+        record.keccak_permute_events = vec![KeccakPermuteEvent::default(); (1 << 20) + 1];
+        let records = record.split(true);
+        records.iter().for_each(|record| {
+            println!("{:?}", record.keccak_permute_events.len());
+        });
+    }
+}

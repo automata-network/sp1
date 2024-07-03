@@ -13,7 +13,7 @@ pub(crate) const STATE_SIZE: usize = 25;
 // The permutation state is 25 u64's.  Our word size is 32 bits, so it is 50 words.
 const STATE_NUM_WORDS: usize = STATE_SIZE * 2;
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Default, Debug, Clone, Serialize, Deserialize)]
 pub struct KeccakPermuteEvent {
     pub lookup_id: usize,
     pub shard: u32,
