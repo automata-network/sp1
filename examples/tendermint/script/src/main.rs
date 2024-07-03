@@ -14,7 +14,7 @@ use tendermint_light_client_verifier::Verifier;
 use crate::util::fetch_latest_commit;
 use crate::util::fetch_light_block;
 
-const TENDERMINT_ELF: &[u8] = include_bytes!("../../program/elf/riscv32im-succinct-zkvm-elf");
+const TENDERMINT_ELF: &[u8] = include_bytes!("../../../../tests/tendermint-benchmark/elf/riscv32im-succinct-zkvm-elf");
 mod util;
 
 async fn get_light_blocks() -> (LightBlock, LightBlock) {
@@ -63,7 +63,7 @@ fn main() {
 
     let client = ProverClient::new();
     let (pk, vk) = client.setup(TENDERMINT_ELF);
-    let proof = client.prove(&pk, stdin).compressed().run().expect("proving failed");
+    let proof = client.prove(&pk, stdin).run().expect("proving failed");
 
     // Verify proof.
     client.verify(&proof, &vk).expect("verification failed");
