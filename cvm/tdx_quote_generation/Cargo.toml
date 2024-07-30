@@ -1,0 +1,9 @@
+[package]
+name = "tdx_quote_generation"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hex = "0.4"
+structopt = "0.3"
+tdx = { path = "./pom-sdk/tdx" }

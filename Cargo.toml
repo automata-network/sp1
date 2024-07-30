@@ -18,7 +18,10 @@ members = [
   "sdk",
   "zkvm/*",
 ]
-exclude = ["examples/target"]
+exclude = [
+  "examples/target",
+  "cvm/tdx_quote_generation"
+]
 resolver = "2"
 
 [workspace.package]

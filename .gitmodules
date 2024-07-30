@@ -1,3 +1,6 @@
 [submodule "contracts/lib/forge-std"]
 	path = contracts/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "cvm/tdx_quote_generation/pom-sdk"]
+	path = cvm/tdx_quote_generation/pom-sdk
+	url = git@github.com:automata-network/pom-sdk.git
