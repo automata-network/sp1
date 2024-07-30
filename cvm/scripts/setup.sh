@@ -12,13 +12,14 @@ cargo --version
 
 # install cargo-prove
 curl -L https://sp1.succinct.xyz | bash && ~/.sp1/bin/sp1up
+source ~/.bashrc
 cargo prove --version
 
 # build and execute the target sp1 program
-cd ../examples/fibonacci/script/
+cd examples/fibonacci/script/
 cargo build --release
 cd ../../target/release/
-. fibonacci-script
+./fibonacci-script
 
 # build the tdx_quote_generation program
 cd ../../../cvm/tdx_quote_generation/
@@ -41,7 +42,7 @@ echo POM_SDK_COMMIT=${POM_SDK_COMMIT}
 cd ../../../
 
 REPORT_DATA="${CARGO_PROVE_HASH}||${PROOF_HASH}||${POM_SDK_COMMIT}"
-REPORT_DATA_HASH=$(sha256sum ${REPORT_DATA} | awk '{print $1}')
+REPORT_DATA_HASH=$(echo -n "$REPORT_DATA" | sha512sum | awk '{print $1}')
 echo REPORT_DATA_HASH=${REPORT_DATA_HASH}
 
-./cvm/tdx_quote_generation/target/release/tdx_quote_generation --report_data ${REPORT_DATA_HASH}
+sudo ./cvm/tdx_quote_generation/target/release/tdx_quote_generation --report_data ${REPORT_DATA_HASH}
