@@ -14,6 +14,9 @@ The following cloud service providers (CSP) have support for Intel TDX:
 - For more information on supported operating systems, please check out the following article on GCP: [supported configurations](https://cloud.google.com/confidential-computing/confidential-vm/docs/supported-configurations#intel-tdx)
 - Currently, TDX enabled VMs can only be created via gcloud or Rest API, please check out this article on how to do so: [create an instance](https://cloud.google.com/confidential-computing/confidential-vm/docs/create-a-confidential-vm-instance#gcloud), and VM instances with Intel TDX in GCP enabled don't support [custom images](https://cloud.google.com/confidential-computing/confidential-vm/docs/create-custom-confidential-vm-images)
 
+  - Example: `gcloud beta compute instances create tdx-instance --machine-type=c3-standard-4  --zone=us-central1-a  --confidential-compute-type=TDX  --maintenance-policy=TERMINATE  --image-family=ubuntu-2204-lts  --image-project=tdx-guest-images  --project={replace to your gcp project}` 
+  - We don't suggest to create TDX VMs with containerOS, it will prevent users to install and execute anything because of the security consideration.
+
 ### Download Dependencies
 ```bash
 sudo apt-get update
