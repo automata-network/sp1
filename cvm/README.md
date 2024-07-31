@@ -72,16 +72,19 @@ You can use [Automata DCAP Library](https://github.com/automata-network/dcap-rs.
 
 ## Future Work
 
-### Integrate other cloud providers
+### Integrate other cloud providers that support Intel TDX
 #### Azure
 - Instance Type: DCesv5-series, DCedsv5-series, ECesv5-series, ECedsv5-series
 - Operating System:  Ubuntu 24.04 Server (Confidential VM)- x64 Gen 2 image, Ubuntu 22.04 Server (Confidential VM) - x64 Gen 2 image.
 - Supported Region: West Europe, Central US, East US 2, North Europe
 #### AWS
-- TBC
+- Coming soon
 #### Self-hosted machines
 - If you wish to use a CSP that is not listed above or run your own host, please ensure that the CSP or host is running the following specs:
   - Linux Kernel >= 6.7
   - Virtual Machine (VM) runs under KVM hypervisor 
-  - VM has access to `/sys/kernel/config/tsm/report` and able to create a temporary directory with sudo (eg. `sudo mkdir /sys/kernel/config/tsm/report/testing123`).
-> If you receive the error `mkdir: cannot create directory ‘testing123’: No such device or address`, it means that ConfigFS is not supported on your VM.
+  - VM has access to `/sys/kernel/config/tsm/report` and able to create a temporary directory with sudo (eg. `sudo mkdir /sys/kernel/config/tsm/report/tmp`)
+    > If you receive the error `mkdir: cannot create directory ‘tmp’: No such device or address`, it means that ConfigFS is not supported on your VM.
+
+### Integrate AMD SEV
+Coming soon
